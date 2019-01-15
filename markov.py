@@ -69,10 +69,13 @@ def make_text(chains):
     """Return text from chains."""
 
     words = []
+    for key in chains:
+        keys = key[0] + " " + key[1]
+        value = choice(chains[key])
+        words.append(keys)
+        words.append(value)
 
-    # your code goes here
-
-    return " ".join(words)
+    print(" ".join(words))
 
 
 input_path = "green-eggs.txt"
