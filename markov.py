@@ -61,7 +61,7 @@ def make_chains(text_string):
             chains[key] += [value]
 
 
-    print(chains)
+    # print(chains)
 
     return chains
 
@@ -69,11 +69,15 @@ def make_text(chains):
     """Return text from chains."""
 
     words = []
-    for key in chains:
-        keys = key[0] + " " + key[1]
-        value = choice(chains[key])
-        words.append(keys)
-        words.append(value)
+    link = choice(list(chains.keys()))
+    link_value  = choice(list(chains[link]))
+    new_link = (link[1], link_value)
+    words += link[0] + " " + link[1] + " " + link_value
+
+    if new_link in chains.keys():
+        words.append(chains[link_value])
+
+
 
     print(" ".join(words))
 
